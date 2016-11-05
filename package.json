@@ -1,0 +1,24 @@
+{
+  "name": "gameproject",
+  "version": "1.0.0",
+  "description": "Rewriting from scratch, making objects this time..",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "socket.io": "*",
+    "mongojs": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustAnAlias/GameProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustAnAlias/GameProject/issues"
+  },
+  "homepage": "https://github.com/JustAnAlias/GameProject#readme"
+}

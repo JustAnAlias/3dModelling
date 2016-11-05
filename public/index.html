@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <link  rel="stylesheet" type="text/css" href="/css">
+    <title>Babylon - Getting Started</title>
+    <!-- link to the last version of babylon -->
+    <script src="/engine"></script>
+</head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <script src="/client"></script>
+    <script src="/socket.io/socket.io.js"></script>
+<!--
+    <script src="/socket"></script>
+-->
+    <script>
+
+      var socket = io();
+
+      socket.on('newPath', function(data){
+        socket.emit(data);
+      });
+
+      socket.on('updatePosition', function(data){
+        updatePlayerPosition(data);
+      });
+      socket.on('connect', function(){
+
+        socket.emit('requestOldPlayers', {});
+      });
+      socket.on('createPlayer', function(data){
+        createPlayer(data);
+      });
+
+      socket.on('existingPlayers', function(data){
+        console.log('adding existing players: ');
+        for (var p in data){
+          console.log('adding player: ' + JSON.stringify(data[p]));
+          addRemotePlayer(data[p]);
+        }
+      })
+
+      socket.on('addOtherPlayer', function(data){
+        console.log('player connected: \n' + JSON.stringify(data));
+        addRemotePlayer(data);
+      });
+      socket.on('removeOtherPlayer', function(data){
+        removeRemotePlayer(data);
+      });
+
+</script>
+</body>
+</html>
